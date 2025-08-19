@@ -89,7 +89,7 @@
     "price": 10.99,
     "description": "Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel",
     "category": "jewelery",
-    "image": "products/pierced.png",
+    "image": "/products/pierced.png",
     "rating": {
       "rate": 1.9,
       "count": 100
@@ -185,7 +185,7 @@
     "price": 29.95,
     "description": "100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort / 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, Button detail on waist / Detail stitching at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON",
     "category": "women's clothing",
-    "image": "products/women-jacket1.png",
+    "image": "/products/women-jacket1.png",
     "rating": {
       "rate": 2.9,
       "count": 340
