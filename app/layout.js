@@ -1,17 +1,12 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "./context/CartContext";
+import { Bree_Serif } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bree = Bree_Serif({
+  weight: "400",
   subsets: ["latin"],
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata = {
   title: "E-Commerce App",
   description: "E-commerce application",
@@ -20,9 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${bree.className} antialiased  flex justify-center`}>
         <CartProvider>{children}</CartProvider>
       </body>
     </html>

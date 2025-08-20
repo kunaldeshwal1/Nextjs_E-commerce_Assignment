@@ -25,7 +25,8 @@ export default function CartPage() {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Your Cart</h1>
+      <h1 className="text-3xl font-bold mb-1">Shopping Cart</h1>
+      <p className="mb-6">Review and manage your cart items</p>
       <div className="space-y-6">
         {cart.map((item) => (
           <div
@@ -43,7 +44,7 @@ export default function CartPage() {
               </div>
               <div>
                 <h2 className="font-semibold text-lg">{item.title}</h2>
-                <p className="text-gray-600">${item.price} each</p>
+                <p>${item.price} each</p>
               </div>
             </div>
             <div className="flex items-center gap-3">

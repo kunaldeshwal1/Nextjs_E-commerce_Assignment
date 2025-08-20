@@ -1,12 +1,20 @@
 import Home from "../components/Home";
-
 export default async function Page() {
-  const productsRes = await fetch("http://localhost:3000/api/products");
+  const productsRes = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products`,
+    { cache: "no-store" }
+  );
   const products = await productsRes.json();
   const categoriesRes = await fetch(
-    "http://localhost:3000/api/products/categories"
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/categories`,
+    { cache: "no-store" }
   );
+  console.log("ran");
   const categories = await categoriesRes.json();
 
-  return <Home products={products} categories={categories} />;
+  return (
+    <div>
+      <Home products={products} categories={categories} />;
+    </div>
+  );
 }
