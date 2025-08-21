@@ -1,17 +1,23 @@
 "use client";
-
-import { useCart } from "../context/CartContext";
+import { useCart } from "../../context/CartContext";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function CartPage() {
-  const { cart, removeFromCart, updateQuantity } = useCart();
-
+  const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
+  const [loading, setLoading] = useState(true);
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 500);
+  }, []);
 
+  if (loading) {
+    return <p>Loading...</p>;
+  }
   if (cart.length === 0) {
     return (
       <div className="p-6 text-center">
@@ -24,54 +30,72 @@ export default function CartPage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className=" mx-auto p-6">
       <h1 className="text-3xl font-bold mb-1">Shopping Cart</h1>
       <p className="mb-6">Review and manage your cart items</p>
-      <div className="flex gap-4">
-        <div className="space-y-6 border p-6 rounded-2xl w-fit h-fit">
+      <div className="flex flex-col md:flex-row gap-4 ">
+        <div className="space-y-6 border p-6 w-fit h-fit">
           {cart.map((item) => (
             <div
               key={item.id}
-              className="flex items-center justify-between border p-4 rounded-lg shadow-sm bg-white"
+              className="flex items-center justify-between border p-4 shadow-sm bg-white"
             >
-              <div className="flex items-center gap-4">
-                <div className="w-20 h-20 relative">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-contain"
-                  />
+              <div className="flex flex-col sm:flex-row sm:justify-between items-center  w-full gap-4">
+                <div className="flex gap-4">
+                  <div className="w-20 h-20 relative">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <div>
+                    <div>
+                      <h2 className="font-semibold text-lg">{item.title}</h2>
+                      <p>${item.price} each</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h2 className="font-semibold text-lg">{item.title}</h2>
-                  <p>${item.price} each</p>
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                      disabled={item.quantity <= 1}
+                      className={`text-black shadow-sm px-2 py-0.5 ${
+                        item.quantity <= 1 ? "invisible" : ""
+                      }`}
+                    >
+                      -
+                    </button>
+                    <span>{item.quantity}</span>
+
+                    <button
+                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                      className={`text-black shadow-sm px-2 py-0.5 ${
+                        item.quantity >= 10 ? "invisible" : ""
+                      }`}
+                      disabled={item.quantity >= 10}
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  <p className="font-medium w-[50px]">
+                    ${(item.price * item.quantity).toFixed(2)}
+                  </p>
+                  <button
+                    onClick={() => removeFromCart(item.id)}
+                    className="text-red-600 hover:underline"
+                  >
+                    Remove
+                  </button>
                 </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <input
-                  type="number"
-                  min="1"
-                  value={item.quantity}
-                  onChange={(e) =>
-                    updateQuantity(item.id, parseInt(e.target.value))
-                  }
-                  className="w-16 border rounded px-2 py-1"
-                />
-                <p className="font-medium">
-                  ${(item.price * item.quantity).toFixed(2)}
-                </p>
-                <button
-                  onClick={() => removeFromCart(item.id)}
-                  className="text-red-600 hover:underline"
-                >
-                  Remove
-                </button>
               </div>
             </div>
           ))}
         </div>
-        <div className="border rounded-2xl p-4 w-[250px] h-fit flex-shrink-0">
+        <div className="border p-4 w-full md:w-[250px] h-fit flex-shrink-0">
           <h2 className="mb-4">Order Summary</h2>
           <div className="flex justify-between">
             <p>Subtotal:</p>
@@ -86,10 +110,15 @@ export default function CartPage() {
             <p>Total:</p>
             <p>${totalPrice.toFixed(2)}</p>
           </div>
-          <div className="flex justify-center bg-black w-full text-white p-2 rounded-sm cursor-pointer ">
+          <div className="flex justify-center bg-black w-full text-white p-2 rounded-sm cursor-pointer">
             <Link href={"/"} className="uppercase text-xs">
               Continue Shopping
             </Link>
+          </div>
+          <div className="flex justify-center bg-black w-full text-white p-2 mt-2 rounded-sm cursor-pointer ">
+            <button onClick={clearCart} className="uppercase text-xs">
+              Clear Cart
+            </button>
           </div>
         </div>
       </div>

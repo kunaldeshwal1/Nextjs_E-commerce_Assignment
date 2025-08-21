@@ -1,6 +1,6 @@
 "use client";
 
-import { useCart } from "../../context/CartContext";
+import { useCart } from "../context/CartContext";
 import { useRouter } from "next/navigation";
 
 export default function CartButtons({ product }) {
@@ -8,8 +8,8 @@ export default function CartButtons({ product }) {
   const router = useRouter();
 
   const handleAddToCart = () => {
-    addToCart(product); // ✅ add to cart
-    router.push("/cart"); // ✅ redirect to cart page
+    addToCart(product);
+    router.push("/cart");
   };
 
   return (

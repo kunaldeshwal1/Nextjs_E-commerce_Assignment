@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CartButtons from "./CartButtons"; // ✅ import client actions
+import CartButtons from "../../../components/CartButtons";
 
 export default async function ProductPage({ params }) {
   const { id } = await params;
@@ -18,11 +18,12 @@ export default async function ProductPage({ params }) {
         </h1>
         {res.ok ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="w-full h-full relative shadow-md bg-gray-100">
+            <div className="flex justify-center w-full h-full relative shadow-md bg-gray-100">
               <Image
                 src={product.image}
                 alt={product.title}
-                fill
+                height={400}
+                width={400}
                 className="object-contain p-14"
               />
             </div>
