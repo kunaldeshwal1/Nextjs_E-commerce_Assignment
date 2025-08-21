@@ -2,25 +2,35 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+const SORT_FILTER = [
+  { label: "Low to High", value: "low" },
+  { label: "High to Low", value: "high" },
+];
 
 export default function Home({ products, categories }) {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectSort, setSelectSort] = useState("all");
 
-  const filteredProducts = products.filter((product) => {
-    const matchSearch = product.title
-      .toLowerCase()
-      .includes(search.toLowerCase());
-    const matchCategory =
-      selectedCategory === "all" || product.category === selectedCategory;
-    return matchSearch && matchCategory;
-  });
-
+  const filteredProducts = products
+    .filter((product) => {
+      const matchSearch = product.title
+        .toLowerCase()
+        .includes(search.toLowerCase());
+      const matchCategory =
+        selectedCategory === "all" || product.category === selectedCategory;
+      return matchSearch && matchCategory;
+    })
+    .sort((a, b) => {
+      if (selectSort === "low") return a.price - b.price;
+      if (selectSort === "high") return b.price - a.price;
+      return 0;
+    });
   return (
     <div className="p-6 max-w-[1440px]">
       <h1 className="text-2xl font-bold mb-4">Ecommerce Store</h1>
       <div className="flex flex-col md:flex-row gap-4 mb-6 justify-between">
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col md:flex-row md:items-center gap-4">
           <p>Filter</p>
           <select
             value={selectedCategory}
@@ -35,7 +45,7 @@ export default function Home({ products, categories }) {
             ))}
           </select>
         </div>
-        <div className="flex justify-end w-full md:w-1/2 relative">
+        <div className="flex justify-end w-full relative">
           <img
             src="/search.png"
             alt=""
@@ -48,6 +58,22 @@ export default function Home({ products, categories }) {
             onChange={(e) => setSearch(e.target.value)}
             className="border px-4 py-2  w-full md:max-w-[500px]"
           />
+        </div>
+        <div>
+          <select
+            className="border px-1 py-2 w-full md:min-w-[200px]"
+            value={selectSort}
+            onChange={(e) => {
+              setSelectSort(e.target.value);
+            }}
+          >
+            <option value="all">Select to Sort</option>
+            {SORT_FILTER.map((item, idx) => (
+              <option key={idx} value={item.value}>
+                {item.label}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 

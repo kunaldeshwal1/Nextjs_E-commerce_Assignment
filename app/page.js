@@ -9,7 +9,6 @@ export default async function Page() {
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/categories`,
     { cache: "no-store" }
   );
-  console.log("ran");
   const categories = await categoriesRes.json();
 
   return (

@@ -22,8 +22,10 @@ export default function CartPage() {
     return (
       <div className="p-6 text-center">
         <h2 className="text-2xl font-bold mb-4">Your cart is empty 🛒</h2>
-        <Link href="/" className="text-blue-600 underline">
-          Browse Products
+        <Link href="/" className="w-full">
+          <div className="flex justify-center bg-black w-full text-white p-2 rounded-sm cursor-pointer">
+            <span className="uppercase text-xs">Browse Products</span>
+          </div>
         </Link>
       </div>
     );
@@ -110,16 +112,17 @@ export default function CartPage() {
             <p>Total:</p>
             <p>${totalPrice.toFixed(2)}</p>
           </div>
-          <div className="flex justify-center bg-black w-full text-white p-2 rounded-sm cursor-pointer">
-            <Link href={"/"} className="uppercase text-xs">
+          <Link href={"/"} className="w-full">
+            <div className="flex justify-center bg-black w-full text-white p-2 rounded-sm cursor-pointer uppercase text-xs">
               Continue Shopping
-            </Link>
-          </div>
-          <div className="flex justify-center bg-black w-full text-white p-2 mt-2 rounded-sm cursor-pointer ">
-            <button onClick={clearCart} className="uppercase text-xs">
-              Clear Cart
-            </button>
-          </div>
+            </div>
+          </Link>
+          <button
+            onClick={clearCart}
+            className=" justify-center bg-black w-full text-white p-2 mt-2 rounded-sm cursor-pointer uppercase text-xs"
+          >
+            Clear Cart
+          </button>
         </div>
       </div>
     </div>
