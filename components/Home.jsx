@@ -26,6 +26,7 @@ export default function Home({ products, categories }) {
       if (selectSort === "high") return b.price - a.price;
       return 0;
     });
+
   return (
     <div>
       <div className="flex flex-col md:flex-row gap-4 mb-6 justify-between">
@@ -75,40 +76,45 @@ export default function Home({ products, categories }) {
           </select>
         </div>
       </div>
+      {filteredProducts.length == 0 ? (
+        <p className="text-center">No Product Found...</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProducts.map((product) => (
+            <Link key={product.id} href={`/products/${product.id}`}>
+              <div className="border border-b-yellow-500 shadow-xl bg-white cursor-pointer hover:shadow-lg transition h-[500px] flex flex-col">
+                <div className="w-full h-64 relative mb-4">
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-contain bg-gray-100 p-4"
+                  />
+                </div>
+                <div className="p-4 mt-auto">
+                  <h2 className="text-lg font-semibold mb-2">
+                    {product.title}
+                  </h2>
+                  <p className="text-sm font-medium text-blue-600 mb-1 capitalize">
+                    Category: {product.category}
+                  </p>
+                  <p className="text-sm mb-2 line-clamp-2">
+                    {product.description}
+                  </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProducts.map((product) => (
-          <Link key={product.id} href={`/products/${product.id}`}>
-            <div className="border border-b-yellow-500 shadow-xl bg-white cursor-pointer hover:shadow-lg transition h-[500px] flex flex-col">
-              <div className="w-full h-64 relative mb-4">
-                <Image
-                  src={product.image}
-                  alt={product.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-contain bg-gray-100 p-4"
-                />
-              </div>
-              <div className="p-4 mt-auto">
-                <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
-                <p className="text-sm font-medium text-blue-600 mb-1 capitalize">
-                  Category: {product.category}
-                </p>
-                <p className="text-sm mb-2 line-clamp-2">
-                  {product.description}
-                </p>
-
-                <div>
-                  <p className="text-xl font-bold mb-2">${product.price}</p>
-                  <div className="flex items-center gap-2 text-yellow-500">
-                    ⭐ {product.rating.rate} ({product.rating.count} reviews)
+                  <div>
+                    <p className="text-xl font-bold mb-2">${product.price}</p>
+                    <div className="flex items-center gap-2 text-yellow-500">
+                      ⭐ {product.rating.rate} ({product.rating.count} reviews)
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
