@@ -27,8 +27,7 @@ export default function Home({ products, categories }) {
       return 0;
     });
   return (
-    <div className="p-6 max-w-[1440px]">
-      <h1 className="text-2xl font-bold mb-4">Ecommerce Store</h1>
+    <div>
       <div className="flex flex-col md:flex-row gap-4 mb-6 justify-between">
         <div className="flex flex-col md:flex-row md:items-center gap-4">
           <p>Filter</p>
