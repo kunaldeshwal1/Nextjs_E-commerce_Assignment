@@ -11,7 +11,7 @@ export default async function Page() {
         </h1>
         <p>🛒</p>
       </div>
-      <Home products={products} categories={categories} />;
+      <Home products={products} categories={categories} />
     </div>
   );
 }

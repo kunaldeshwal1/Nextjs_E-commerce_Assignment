@@ -98,7 +98,7 @@ export default function Home({ products, categories }) {
                   {product.description}
                 </p>
 
-                <div className="">
+                <div>
                   <p className="text-xl font-bold mb-2">${product.price}</p>
                   <div className="flex items-center gap-2 text-yellow-500">
                     ⭐ {product.rating.rate} ({product.rating.count} reviews)
