@@ -41,8 +41,8 @@ export default function CartPage() {
               key={item.id}
               className="flex items-center justify-between border p-4 shadow-sm bg-white"
             >
-              <div className="flex flex-col sm:flex-row sm:justify-between items-center  w-full gap-4">
-                <div className="flex gap-4">
+              <div className="flex flex-col lg:flex-row lg:justify-between items-center  w-full gap-4">
+                <div className="flex flex-col lg:flex-row gap-4">
                   <div className="w-20 h-20 relative">
                     <Image
                       src={item.image}

@@ -85,6 +85,7 @@ export default function Home({ products, categories }) {
                   src={product.image}
                   alt={product.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-contain bg-gray-100 p-4"
                 />
               </div>

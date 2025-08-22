@@ -5,7 +5,12 @@ export default async function Page() {
   const categories = await getCategories();
   return (
     <div className="p-6 max-w-[1440px]">
-      <h1 className="text-2xl font-bold mb-4">Ecommerce Store</h1>
+      <div className="flex justify-between">
+        <h1 className="text-2xl text-gray-800 font-bold mb-4">
+          Ecommerce Store
+        </h1>
+        <p>🛒</p>
+      </div>
       <Home products={products} categories={categories} />;
     </div>
   );
