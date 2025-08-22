@@ -2,19 +2,13 @@
 import { useCart } from "../../context/CartContext";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-
 export default function CartPage() {
-  const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
-  const [loading, setLoading] = useState(true);
+  const { cart, removeFromCart, updateQuantity, clearCart, loading } =
+    useCart();
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 500);
-  }, []);
-
   if (loading) {
     return (
       <div className="h-[100vh] flex items-center">

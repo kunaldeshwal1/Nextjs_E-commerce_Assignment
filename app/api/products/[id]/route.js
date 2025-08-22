@@ -1,6 +1,6 @@
 import products from "../../../../public/products.json";
 
-export async function GET({ params }) {
+export async function GET(request, { params }) {
   const { id } = await params;
   const product = products.find((p) => p.id === parseInt(id));
   if (!product) {
