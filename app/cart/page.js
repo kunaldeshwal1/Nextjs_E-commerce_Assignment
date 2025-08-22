@@ -16,7 +16,11 @@ export default function CartPage() {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="h-[100vh] flex items-center">
+        <p>Loading...</p>
+      </div>
+    );
   }
   if (cart.length === 0) {
     return (
@@ -34,9 +38,10 @@ export default function CartPage() {
   return (
     <div className=" mx-auto p-6">
       <h1 className="text-3xl font-bold mb-1">Shopping Cart</h1>
-      <p className="mb-6">Review and manage your cart items</p>
+      <h2 className="mb-4">Review and manage your cart items</h2>
       <div className="flex flex-col md:flex-row gap-4 ">
-        <div className="space-y-6 border p-6 w-fit h-fit">
+        <div className="space-y-2 border p-4 w-fit h-fit">
+          <h3 className="mb-4 font-bold">Cart Items</h3>
           {cart.map((item) => (
             <div
               key={item.id}
