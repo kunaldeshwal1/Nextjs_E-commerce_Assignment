@@ -60,9 +60,11 @@ export default function CartPage() {
                         {item.description.charAt(0).toUpperCase() +
                           item.description.slice(1)}
                       </h3>
-                      <p className="capitalize">{item.category}</p>
-                      <div className="flex items-center gap-2 mb-4 ">
-                        ⭐ {item.rating?.rate} ({item.rating?.count})
+                      <div className="flex gap-4">
+                        <p className="capitalize">{item.category}</p>
+                        <div className="flex items-center gap-2 mb-4 ">
+                          ⭐ {item.rating?.rate} ({item.rating?.count})
+                        </div>
                       </div>
                     </div>
                   </div>

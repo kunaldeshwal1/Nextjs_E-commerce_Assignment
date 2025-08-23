@@ -9,9 +9,7 @@ export default async function ProductPage({ params }) {
     <div>
       <div className="max-w-4xl mx-auto p-6">
         <div className="flex justify-between">
-          <h1 className="text-2xl text-gray-800 font-bold mb-4">
-            Ecommerce Store
-          </h1>
+          <h1 className="text-2xl font-bold mb-4">Ecommerce Store</h1>
           <p>🛒</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -30,8 +28,12 @@ export default async function ProductPage({ params }) {
               <p className="text-blue-600 font-medium mb-2 capitalize">
                 Category: {product.category}
               </p>
-              <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
-              <p className="text-2xl font-bold mb-4">${product.price}</p>
+              <h1 className="text-xl sm:text-3xl font-bold mb-4">
+                {product.title}
+              </h1>
+              <p className="text-lg sm:text-2xl font-bold mb-4">
+                ${product.price}
+              </p>
               <div className="flex items-center gap-2 text-yellow-500 mb-4 ">
                 ⭐ {product.rating?.rate} ({product.rating?.count} reviews)
               </div>
