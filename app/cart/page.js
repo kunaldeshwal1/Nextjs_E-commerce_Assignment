@@ -124,6 +124,9 @@ export default function CartPage() {
           </button>
         </div>
       </div>
+      <p className="p-2 mt-2.5 text-center">
+        © 2025 Ecommerce Store. All rights reserved.
+      </p>
     </div>
   );
 }

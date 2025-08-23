@@ -47,7 +47,7 @@ export default async function ProductPage({ params }) {
           </div>
         </div>
       </div>
-      <p className="py-2 text-center">
+      <p className="p-2 text-center">
         © 2025 Ecommerce Store. All rights reserved.
       </p>
     </div>

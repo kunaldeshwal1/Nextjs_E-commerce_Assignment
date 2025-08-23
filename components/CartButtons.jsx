@@ -23,13 +23,18 @@ export default function CartButtons({ product }) {
         </button>
 
         <button
-          onClick={() => alert("Will be available in some days!")}
+          onClick={() => alert("Coming Soon!")}
           className="bg-black w-full text-white px-6 py-3 rounded-sm cursor-pointer uppercase text-xs"
         >
           Buy Now
         </button>
       </div>
-      <button className="flex">❤️ Wishlist</button>
+      <button
+        className="flex cursor-pointer"
+        onClick={() => alert("Coming Soon!")}
+      >
+        ❤️ Wishlist
+      </button>
     </div>
   );
 }

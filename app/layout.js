@@ -1,11 +1,17 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "../context/CartContext";
-import { Bree_Serif } from "next/font/google";
+import localFont from "next/font/local";
 
-const bree = Bree_Serif({
-  weight: "400",
-  subsets: ["latin"],
+const bree = localFont({
+  src: [
+    {
+      path: "../public/fonts/BreeSerif-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  display: "swap",
+  variable: "--font-bree",
 });
 export const metadata = {
   title: "E-Commerce App",
