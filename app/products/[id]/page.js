@@ -36,6 +36,7 @@ export default async function ProductPage({ params }) {
                 ⭐ {product.rating?.rate} ({product.rating?.count} reviews)
               </div>
               <div className="border-b border-gray-300 mb-4"></div>
+              <h2 className="font-bold mb-2">Description</h2>
               <p className="mb-4">
                 {product.description.charAt(0).toUpperCase() +
                   product.description.slice(1)}

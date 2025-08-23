@@ -33,13 +33,13 @@ export default function CartPage() {
     <div className=" mx-auto p-6">
       <h1 className="text-3xl font-bold mb-1">Shopping Cart</h1>
       <h2 className="mb-4">Review and manage your cart items</h2>
-      <div className="flex flex-col md:flex-row gap-4 ">
-        <div className="space-y-2 border p-4 w-fit h-fit">
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="space-y-4 border rounded-2xl p-4 w-fit h-fit">
           <h3 className="mb-4 font-bold">Cart Items</h3>
           {cart.map((item) => (
             <div
               key={item.id}
-              className="flex items-center justify-between border p-4 shadow-sm bg-white"
+              className="flex rounded-2xl items-center justify-between border p-4 shadow-sm bg-white"
             >
               <div className="flex flex-col lg:flex-row lg:justify-between items-center  w-full gap-4">
                 <div className="flex flex-col lg:flex-row gap-4">
@@ -53,8 +53,17 @@ export default function CartPage() {
                   </div>
                   <div>
                     <div>
-                      <h2 className="font-semibold text-lg">{item.title}</h2>
-                      <p>${item.price} each</p>
+                      <h2 className="font-semibold text-lg max-w-[400px] line-clamp-1">
+                        {item.title}
+                      </h2>
+                      <h3 className="max-w-[400px] line-clamp-1">
+                        {item.description.charAt(0).toUpperCase() +
+                          item.description.slice(1)}
+                      </h3>
+                      <p className="capitalize">{item.category}</p>
+                      <div className="flex items-center gap-2 mb-4 ">
+                        ⭐ {item.rating?.rate} ({item.rating?.count})
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -96,7 +105,7 @@ export default function CartPage() {
             </div>
           ))}
         </div>
-        <div className="border p-4 w-full md:w-[250px] h-fit flex-shrink-0">
+        <div className="border rounded-2xl p-4 w-full md:w-[250px] h-fit flex-shrink-0">
           <h2 className="mb-4">Order Summary</h2>
           <div className="flex justify-between">
             <p>Subtotal:</p>
