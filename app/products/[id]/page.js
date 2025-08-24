@@ -7,7 +7,7 @@ export default async function ProductPage({ params }) {
   const product = await getProduct(id);
   return (
     <div>
-      <div className="max-w-4xl mx-auto p-6">
+      <main className="max-w-4xl mx-auto p-6">
         <div className="flex justify-between">
           <h1 className="text-2xl font-bold mb-4">Ecommerce Store</h1>
           <p>🛒</p>
@@ -49,10 +49,10 @@ export default async function ProductPage({ params }) {
             <CartButtons product={product} />
           </div>
         </div>
-      </div>
-      <p className="p-2 text-center">
+      </main>
+      <footer className="p-2 text-center">
         © 2025 Ecommerce Store. All rights reserved.
-      </p>
+      </footer>
     </div>
   );
 }
