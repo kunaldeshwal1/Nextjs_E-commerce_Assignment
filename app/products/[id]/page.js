@@ -1,7 +1,6 @@
 import Image from "next/image";
 import CartButtons from "../../../components/CartButtons";
-import { getProduct } from "@/lib/getProduct";
-
+import { getProduct } from "@/lib/getProducts";
 export default async function ProductPage({ params }) {
   const { id } = await params;
   const product = await getProduct(id);
