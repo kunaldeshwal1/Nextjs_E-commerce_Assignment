@@ -1,5 +1,4 @@
-import products from "../../../../public/products.json";
-
+import products from "@/lib/products.json";
 export async function GET(request, { params }) {
   const { id } = await params;
   const product = products.find((p) => p.id === parseInt(id));

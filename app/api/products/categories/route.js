@@ -1,10 +1,7 @@
-const CATEGORIES = [
-  "electronics",
-  "jewelery",
-  "men's clothing",
-  "women's clothing",
-];
-
+import categories from "@/lib/categories.json";
 export async function GET() {
-  return Response.json(CATEGORIES);
+  if (!categories || categories.length === 0) {
+    return Response.json({ error: "No category found" }, { status: 404 });
+  }
+  return Response.json(categories);
 }
