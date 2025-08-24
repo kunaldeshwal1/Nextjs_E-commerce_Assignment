@@ -68,7 +68,7 @@ export default function Home({ products, categories }) {
                 setSelectSort(e.target.value);
               }}
             >
-              <option value="all">Select to Sort</option>
+              <option>Sort By</option>
               {SORT_FILTER.map((item, idx) => (
                 <option key={idx} value={item.value}>
                   {item.label}
@@ -118,9 +118,6 @@ export default function Home({ products, categories }) {
           </div>
         )}
       </main>
-      <footer className="p-2 mt-2.5 text-center">
-        © 2025 Ecommerce Store. All rights reserved.
-      </footer>
     </div>
   );
 }
